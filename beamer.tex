@@ -1,0 +1,200 @@
+\documentclass[unknownkeysallowed]{beamer}
+\usepackage[french,english]{babel}
+\input{Beamer_js}
+\input{shortcuts_js}
+%\usepackage{./OrganizationFiles/tex/sty/shortcuts_js}
+\usepackage{csquotes}
+
+\graphicspath{{./images/}}
+
+\addbibresource{Bibliographie.bib}
+\usepackage{enumerate}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[english]{babel}
+\uselanguage{French}
+\usepackage{dsfont}
+\usepackage{bbold}
+\usepackage{stmaryrd}
+\languagepath{French}
+\usepackage{xcolor}
+
+\usepackage{pgf}
+\usepackage{tikz}
+
+\begin{document}
+
+
+\begin{frame}[noframenumbering]
+\thispagestyle{empty}
+\bigskip
+\bigskip
+\begin{center}{
+\LARGE\color{marron}
+\textbf{HMMA 307 : Modèle Linéaire Avancé}
+\textbf{ }\\
+\vspace{0.5cm}
+}
+
+\color{marron}
+\textbf{Modèle linéaire généralisé mixte}
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{center}
+\textbf{KHALIFI OUMAYMA } \\
+\vspace{0.1cm}
+\textit{M2 MIND}\\
+
+\vspace{0.5cm}
+Université de Montpellier \\
+\end{center}
+
+\centering
+\includegraphics[width=0.13\textwidth]{Logo.pdf}
+\end{frame}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%             Headers               %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% plan de la présentation
+\begin{frame}
+\frametitle{Sommaire}
+\tableofcontents
+\end{frame}
+
+
+%\section{Introduction}
+%\begin{frame}
+%\frametitle{Introduction}
+%ween t
+%\end{frame}
+\section{Définition}
+
+\begin{frame}{MLM}
+   
+  
+  
+\begin{alertblock}{Définition: }
+En notation matricielle,un modèle mixte peut être représenté comme suit:
+  $$\boldsymbol{y}=X \boldsymbol{\beta}+Z \boldsymbol{u}+\boldsymbol{\epsilon}$$\\
+  avec:\\
+ 
+  
+   
+\end {alertblock}
+  
+  \\ \\ \\
+  
+  
+  %\\ \\We have:\\$$\left.y_{i, j, k} \stackrel{i i %d}{\sim} \mathcal{N}\left(\mu_{i j}, \sigma^{2}\right), %\quad \forall i \in[\![1, I]\!] , \forall j %\in\left[\![1, J\right]\!] ,\forall k \in\left[\![1, %n_{i j}\right]\!]$$\\
+  % $$y_{i, j, k}=\mu+\alpha_{i}+\beta_{j}+\varepsilon_{i, %j, k}$$\\
+  \begin{itemize}\\ \\
+
+   \item $\boldsymbol{y}$ un vecteur connu d'observations, de moyenne $E(\boldsymbol{y})=X\boldsymbol{\beta}$.
+\\
+   \item$\beta$ un vecteur inconnu d'effets fixes.\\
+   \item$\boldsymbol{u}$ un vecteur inconnu d'effets aléatoires, de moyenne $E(\boldsymbol{u})=\mathbf{0}$ et ayant pour matrice de variance-covariance $\operatorname{var}(\boldsymbol{u})=G$. \\
+   \item$\epsilon$  un vecteur inconnu d'erreur aléatoires, de moyenne $E(\boldsymbol{\epsilon})=\mathbf{0}$ et de variance $\operatorname{var}(\boldsymbol{\epsilon})=R$.\\
+   \item$X$ et$Z$ des matrices liant les observations $\boldsymbol{y}$ à $\beta$ et $\boldsymbol{u}$, respectivement.\\ 
+   \end{itemize}
+\end{frame}
+
+
+
+
+
+
+
+
+
+\begin{frame}
+\frametitle{}
+ \includegraphics[scale=0.8]{C1.PNG}
+\end{frame}
+
+\section{Exemple}
+\begin{frame}
+\frametitle{exemple d'un jeu de données simulé:}
+   
+    $$
+\overbrace{\mathbf{y}}^{8525 \times 1}=\underbrace{\mathbf{X}}_{8525 \times 6}\underbrace{\beta}_{6 \times 1}+ \underbrace{\mathbf{Z}}_{8525 \times 407}\underbrace{\boldsymbol{u}}_{407 \times 1}+\overbrace{\varepsilon}^{8525 \times 1}
+$$\\
+
+$\mathbf{y}=\left[\begin{array}{l}\text { mobility } \\ 2 \\ 2 \\ \cdots \\ 3\end{array}\right]$ \hspace{2.8cm}
+$\boldsymbol{\beta}=\left[\begin{array}{c}
+4.782 \\
+.025 \\
+.011 \\
+.012 \\
+0 \\
+-.009
+\end{array}\right]$\\
+$$\mathbf{X}=\left[\begin{array}{llllll}
+\text { Intercept } & \text { Age } & \text { Married } & \text { Sex } & \text { WBC } & \text { RBC } \\
+1 & 64.97 & 0 & 1 & 6087 & 4.87 \\
+1 & 53.92 & 0 & 0 & 6700 & 4.68 \\
+\ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\
+1 & 56.07 & 0 & 1 & 6430 & 4.73
+\end{array}\right]$$\\
+
+\end{frame}
+
+
+\begin{frame}
+\includegraphics[scale=0.7]{A3.png}
+\end{frame}
+
+
+\begin{frame}
+\includegraphics[scale=0.7]{Ca.PNG}
+\end{frame}
+
+\begin{frame}
+\includegraphics[scale=0.45]{A1.png}
+\end{frame}
+
+\begin{frame}
+\includegraphics[scale=0.6]{A2.PNG}
+\end{frame}
+
+\begin{frame}
+$L 1:\quad Y_{i j}=\beta_{0 j}+\beta_{1 j} A g e_{i j}+\beta_{2 j} Married_{i j}+\beta_{3 j} \operatorname{Sex}_{i j}+\beta_{4 j} W B C_{i j}+\beta_{5 j} R B C_{i j}+e_{i j}$\\
+\vspace{0.4cm}
+$L 2: \quad \beta_{0 j}=\gamma_{00}+u_{0 j}$\\
+
+\vspace{0.4cm}
+$L 2: \quad \beta_{1 j}=\gamma_{10}$\\
+
+\vspace{0.4cm}
+$L 2: \quad \beta_{2 j}=\gamma_{20}$\\
+\vspace{0.4cm}
+
+$L 2: \quad \beta_{3 j}=\gamma_{30}$\\
+\vspace{0.4cm}
+
+$L 2: \quad \beta_{4 j}=\gamma_{40}$\\
+\vspace{0.4cm}
+
+$L 2: \quad \beta_{5 j}=\gamma_{50}$\\
+\vspace{0.4cm}
+$Y_{i j}=\left(\gamma_{00}+u_{0 j}\right)+\gamma_{10} A g e_{i j}+\gamma_{20}$Married$_{i j}+\gamma_{30} S E X_{i j}+\gamma_{40} W B C_{i j}+\gamma_{50} R B C_{i j}+e_{i j}$
+\end{frame}
+
+
+
+
+\end{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
